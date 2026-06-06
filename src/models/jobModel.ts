@@ -17,6 +17,8 @@ const jobSchema = new Schema({
   name: String,
   industry: String,
   approved: Boolean,
+  companyId: String,
+  status: Boolean
 });
 
 //model
