@@ -10,6 +10,7 @@ const companySchema = new Schema({
   description: String,
   logo: String,
   status: String,
+  recruiterId: String,
 });
 
 //model

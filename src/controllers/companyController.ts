@@ -21,6 +21,29 @@ const createCompany = async (req: Request, res: Response) => {
   }
 };
 
+const getJobReqruiter = async (req: Request, res: Response) => {
+  try {
+    const recruiterId = req.query.comId as string;
+
+    const jobs = await companyModel.find({
+      recruiterId,
+    });
+
+    res.status(200).json({
+      success: true,
+      data: jobs,
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch jobs",
+    });
+  }
+};
+
 export const companyController = {
   createCompany,
+  getJobReqruiter,
 };
