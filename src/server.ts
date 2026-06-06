@@ -1,15 +1,12 @@
-import express, {
-  type Application,
-  type Response,
-  type Request,
-} from "express";
-const app: Application = express();
-const port = 3001;
+import app from "./app";
+import config from "./config/env.config";
+import { connectDB } from "./db/db";
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!");
-});
+const main = async () => {
+  await connectDB();
+  app.listen(config.port, () => {
+    console.log(`Example app listening on port ${config.port}`);
+  });
+};
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+main();
