@@ -19,7 +19,7 @@ const jobSchema = new Schema({
   approved: Boolean,
   companyId: String,
   status: Boolean
-});
+},{timestamps:true});
 
 //model
 

@@ -11,7 +11,7 @@ const companySchema = new Schema({
   logo: String,
   status: String,
   recruiterId: String,
-});
+},{timestamps:true});
 
 //model
 
