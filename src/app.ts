@@ -37,6 +37,27 @@ app.get("/api/job", async (req: Request, res: Response) => {
     });
   }
 });
+app.get("/api/job", async (req: Request, res: Response) => {
+  try {
+    const companyId = req.query.comId as string;
+
+    const jobs = await JobModel.find({
+      companyId,
+    });
+
+    res.status(200).json({
+      success: true,
+      data: jobs,
+    });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch jobs",
+    });
+  }
+});
 
 app.use("/api/job", JobRoute);
 app.use('/api/company',CompanyRoute)
