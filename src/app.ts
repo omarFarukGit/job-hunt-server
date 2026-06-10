@@ -37,17 +37,15 @@ app.get("/api/job", async (req: Request, res: Response) => {
     });
   }
 });
-app.get("/api/job", async (req: Request, res: Response) => {
-  try {
-    const companyId = req.query.comId as string;
 
-    const jobs = await JobModel.find({
-      companyId,
-    });
+app.get("/api/job/:id", async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const job = await JobModel.findById(id);
 
     res.status(200).json({
       success: true,
-      data: jobs,
+      data: job,
     });
   } catch (error) {
     console.error(error);
@@ -58,8 +56,7 @@ app.get("/api/job", async (req: Request, res: Response) => {
     });
   }
 });
-
 app.use("/api/job", JobRoute);
-app.use('/api/company',CompanyRoute)
+app.use("/api/company", CompanyRoute);
 
 export default app;
