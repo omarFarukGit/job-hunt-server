@@ -1,15 +1,22 @@
 import type { Request, Response } from "express";
 import subcriptionsModel from "../models/subcriptionsModel";
+import { UserModel } from "../models/userModel";
 
 const createSubcription = async (req: Request, res: Response) => {
   try {
     const createData = req.body;
 
-    const result = subcriptionsModel.create(createData);
+    const result = await subcriptionsModel.create(createData);
+    const updatedUser = await UserModel.findOneAndUpdate(
+      { email: createData.email },
+      { $set: { plan: createData.planId } },
+      { returnDocument: "after" },
+    );
+    console.log(updatedUser,createData.email);
     res.status(201).json({
       success: false,
-      message: "created succefuly",
-      data: await result,
+      message: "update succefuly",
+      data: updatedUser,
     });
   } catch (error: any) {
     res.status(500).json({
@@ -20,6 +27,6 @@ const createSubcription = async (req: Request, res: Response) => {
   }
 };
 
-export const subcriptionsController={
-    createSubcription
-}
+export const subcriptionsController = {
+  createSubcription,
+};
