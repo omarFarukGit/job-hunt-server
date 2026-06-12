@@ -9,6 +9,7 @@ import { CompanyRoute } from "./routes/companyRoute";
 import { ApplictionRoute } from "./routes/applictionsRoute";
 import cors from "cors";
 import { PlansRote } from "./routes/plansRoute";
+import { SubcriptionsRoute } from "./routes/subcriptionsRoute";
 
 const app: Application = express();
 const port = 3001;
@@ -23,5 +24,6 @@ app.use("/api/job", JobRoute);
 app.use("/api/company", CompanyRoute);
 app.use("/api/applications", ApplictionRoute);
 app.use("/api/plans", PlansRote);
+app.use("/api/subcriptions", SubcriptionsRoute);
 
 export default app;
