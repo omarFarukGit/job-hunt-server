@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
 import JobModel from "../models/jobModel";
-import applictionModel from "../models/applicationModel";
+
 
 const createJob = async (req: Request, res: Response) => {
   try {
