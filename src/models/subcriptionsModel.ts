@@ -2,11 +2,12 @@ import { model, Schema } from "mongoose";
 
 //schema
 const subcriptionsSchema = new Schema(
-{
-    email:String,
-    planId: String,
-
-  },{timestamps:true});
+  {
+    email: String,
+    plan: String,
+  },
+  { timestamps: true },
+);
 
 //model
 

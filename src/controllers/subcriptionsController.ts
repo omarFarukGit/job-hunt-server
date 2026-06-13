@@ -2,6 +2,7 @@ import type { Request, Response } from "express";
 import subcriptionsModel from "../models/subcriptionsModel";
 import { UserModel } from "../models/userModel";
 
+
 const createSubcription = async (req: Request, res: Response) => {
   try {
     const createData = req.body;
@@ -12,7 +13,7 @@ const createSubcription = async (req: Request, res: Response) => {
       { $set: { plan: createData.planId } },
       { returnDocument: "after" },
     );
-    console.log(updatedUser,createData.email);
+    console.log(updatedUser,createData);
     res.status(201).json({
       success: false,
       message: "update succefuly",

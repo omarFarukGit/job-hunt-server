@@ -6,6 +6,7 @@ const createApply = async (req: Request, res: Response) => {
     const createData = req.body;
 
     const result = applictionModel.create(createData);
+    console.log(createData,'applicatnt')
     res.status(201).json({
       success: false,
       message: "created succefuly",
